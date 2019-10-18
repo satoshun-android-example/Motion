@@ -8,7 +8,12 @@
   <fragment
     android:id="@+id/nav_card"
     android:name="com.github.satoshun.example.main.CardTransitionFragment"
-    tools:layout="@layout/card_transition_frag" />
+    tools:layout="@layout/card_transition_frag">
+
+    <action
+      android:id="@+id/nav_card_to_dest"
+      app:destination="@id/nav_card_dest" />
+  </fragment>
 
   <fragment
     android:id="@+id/nav_card_dest"
