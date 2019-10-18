@@ -1,0 +1,28 @@
+import static dependencies.DependenciesKt.*
+
+buildscript {
+  repositories {
+    google()
+    jcenter()
+  }
+  dependencies {
+    classpath ANDROID_PLUGIN
+    classpath KOTLIN_PLUGIN
+    classpath VERSIONS_PLUGIN
+    classpath SAFEARGS_PLUGIN
+  }
+}
+
+allprojects {
+  repositories {
+    google()
+    jcenter()
+    maven {
+      url 'https://oss.sonatype.org/content/repositories/snapshots/'
+    }
+  }
+}
+
+task clean(type: Delete) {
+  delete rootProject.buildDir
+}
