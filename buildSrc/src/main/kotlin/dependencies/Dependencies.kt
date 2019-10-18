@@ -1,8 +1,8 @@
 package dependencies
 
-const val COMPILE_SDK = 28
+const val COMPILE_SDK = 29
 const val MIN_SDK = 21
-const val TARGET_SDK = 28
+const val TARGET_SDK = 29
 
 private const val VKOTLIN = "1.3.50"
 private const val VNAVIGATION = "1.0.0"
@@ -78,6 +78,8 @@ const val GROUPIE_DATABINDING = "com.xwray:groupie-databinding:2.6.0"
 const val WORK_MANAGER = "androidx.work:work-runtime-ktx:2.0.0-rc01"
 
 const val ANDROID_ANNOTATION = "androidx.annotation:annotation:1.0.0"
+
+const val TRANSITION = "androidx.transition:transition:1.3.0-beta01"
 
 private const val VDAGGER = "2.22.1"
 const val DAGGER_RUNTIME = "com.google.dagger:dagger:$VDAGGER"

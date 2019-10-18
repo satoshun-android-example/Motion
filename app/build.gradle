@@ -63,6 +63,8 @@ dependencies {
   implementation GROUPIE
   implementation GROUPIE_DATABINDING
 
+  implementation TRANSITION
+
   testImplementation JUNIT
 
   androidTestImplementation TEST_RUNNER

@@ -3,10 +3,15 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/nav_graph"
-  app:startDestination="@layout/main_frag">
+  app:startDestination="@id/nav_card">
 
   <fragment
-    android:id="@+id/blankFragment"
-    android:name="com.github.satoshun.example.main.MainFragment"
-    tools:layout="@layout/main_frag" />
+    android:id="@+id/nav_card"
+    android:name="com.github.satoshun.example.main.CardTransitionFragment"
+    tools:layout="@layout/card_transition_frag" />
+
+  <fragment
+    android:id="@+id/nav_card_dest"
+    android:name="com.github.satoshun.example.main.CardTransitionDestinationFragment"
+    tools:layout="@layout/card_transition_destination_frag" />
 </navigation>
