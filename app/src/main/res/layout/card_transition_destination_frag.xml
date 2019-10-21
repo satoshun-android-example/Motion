@@ -7,17 +7,18 @@
     android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorSurface">
+    android:background="?attr/colorSurface"
+    android:elevation="1dp">
+
+    <com.github.satoshun.example.cardtransition.MirrorView
+      android:id="@+id/card_mirror"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@+id/container"
+      android:id="@+id/coordinator"
       android:layout_width="match_parent"
       android:layout_height="match_parent">
-
-      <com.github.satoshun.example.cardtransition.MirrorView
-        android:id="@+id/card_mirror"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
       <ImageView
         android:id="@+id/image"

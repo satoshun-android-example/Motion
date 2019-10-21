@@ -11,9 +11,9 @@
     <com.google.android.material.card.MaterialCardView
       android:id="@+id/card"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
+      android:layout_height="128dp"
       android:layout_gravity="center"
-      android:layout_margin="64dp"
+      android:layout_margin="16dp"
       app:cardCornerRadius="16dp"
       app:cardElevation="4dp">
 
@@ -33,7 +33,7 @@
           android:layout_height="0dp"
           android:scaleType="centerCrop"
           android:src="@drawable/ic_launcher_background"
-          app:layout_constraintDimensionRatio="H,9:16"
+          app:layout_constraintDimensionRatio="H,50:9"
           app:layout_constraintTop_toTopOf="parent" />
 
         <TextView

@@ -76,9 +76,13 @@ class CardTransitionDestinationFragment : Fragment() {
     super.onViewCreated(view, savedInstanceState)
 
     ViewCompat.setTransitionName(binding.background, TRANSITION_NAME_BACKGROUND)
-    ViewCompat.setTransitionName(binding.container, TRANSITION_NAME_ARTICLE_CONTENT)
+    ViewCompat.setTransitionName(binding.coordinator, TRANSITION_NAME_ARTICLE_CONTENT)
     ViewCompat.setTransitionName(binding.cardMirror, TRANSITION_NAME_CARD_CONTENT)
-    ViewGroupCompat.setTransitionGroup(binding.container, true)
+    ViewGroupCompat.setTransitionGroup(binding.coordinator, true)
+
+//    viewLifecycleOwner.lifecycleScope.launch {
+//      binding.image.setBackgroundResource(R.drawable.ic_launcher_background)
+//    }
 
 //    Glide
 //      .with(binding.image)
@@ -100,8 +104,4 @@ inline fun transitionTogether(crossinline body: TransitionSet.() -> Unit): Trans
 
 operator fun TransitionSet.plusAssign(transition: Transition) {
   addTransition(transition)
-}
-
-operator fun TransitionSet.get(i: Int): Transition {
-  return getTransitionAt(i) ?: throw IndexOutOfBoundsException()
 }
