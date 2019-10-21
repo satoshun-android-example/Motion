@@ -3,7 +3,17 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/nav_graph"
-  app:startDestination="@id/nav_card">
+  app:startDestination="@id/nav_app">
+
+  <fragment
+    android:id="@+id/nav_app"
+    android:name="com.github.satoshun.example.AppFragment"
+    tools:layout="@layout/app_frag">
+
+    <action
+      android:id="@+id/nav_app_to_card"
+      app:destination="@id/nav_card" />
+  </fragment>
 
   <fragment
     android:id="@+id/nav_card"

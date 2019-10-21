@@ -46,9 +46,9 @@ class CardTransitionDestinationFragment : Fragment() {
 
     // These are the shared element transitions.
     sharedElementEnterTransition =
-      createSharedElementTransition(300L, R.id.article_mirror)
+      createSharedElementTransition(TRANSITION_DURATION, R.id.article_mirror)
     sharedElementReturnTransition =
-      createSharedElementTransition(250L, R.id.card_mirror)
+      createSharedElementTransition(TRANSITION_DURATION, R.id.card_mirror)
   }
 
   private fun createSharedElementTransition(duration: Long, @IdRes noTransform: Int): Transition {

@@ -3,44 +3,50 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools">
 
-  <com.google.android.material.card.MaterialCardView
-    android:id="@+id/card_content"
+  <FrameLayout
+    android:id="@+id/content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="4dp"
-    app:contentPadding="32dp">
+    android:layout_height="match_parent">
 
-    <com.github.satoshun.example.cardtransition.MirrorView
-      android:id="@+id/article_mirror"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
       android:id="@+id/card"
       android:layout_width="match_parent"
-      android:layout_height="match_parent">
+      android:layout_height="match_parent"
+      android:layout_gravity="center"
+      android:layout_margin="64dp"
+      app:cardCornerRadius="16dp"
+      app:cardElevation="4dp">
 
-      <ImageView
-        android:id="@+id/image"
+      <com.github.satoshun.example.cardtransition.MirrorView
+        android:id="@+id/article_mirror"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="180dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher_background"
-        app:layout_constraintDimensionRatio="H,16:9"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent" />
 
-      <TextView
-        android:id="@+id/name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="NAME"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image"
-        tools:ignore="HardcodedText" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-  </com.google.android.material.card.MaterialCardView>
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+          android:id="@+id/image"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:scaleType="centerCrop"
+          android:src="@drawable/ic_launcher_background"
+          app:layout_constraintDimensionRatio="H,9:16"
+          app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+          android:id="@+id/name"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="16dp"
+          android:layout_marginTop="16dp"
+          android:text="NAME"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/image"
+          tools:ignore="HardcodedText" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+  </FrameLayout>
 </layout>
