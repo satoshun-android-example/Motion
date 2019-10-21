@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.satoshun.example.main
+package com.github.satoshun.example.cardtransition
 
 import android.animation.TimeInterpolator
 import android.os.Bundle
@@ -22,19 +22,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.IdRes
 import androidx.core.view.ViewCompat
+import androidx.core.view.ViewGroupCompat
 import androidx.core.view.animation.PathInterpolatorCompat
 import androidx.fragment.app.Fragment
 import androidx.transition.ChangeBounds
 import androidx.transition.ChangeTransform
 import androidx.transition.Transition
 import androidx.transition.TransitionSet
-import com.bumptech.glide.Glide
 import com.github.satoshun.example.R
 import com.github.satoshun.example.databinding.CardTransitionDestinationFragBinding
 
 class CardTransitionDestinationFragment : Fragment() {
   companion object {
     const val TRANSITION_NAME_BACKGROUND = "background"
+    const val TRANSITION_NAME_CARD_CONTENT = "card_content"
+    const val TRANSITION_NAME_ARTICLE_CONTENT = "article_content"
   }
 
   private lateinit var binding: CardTransitionDestinationFragBinding
@@ -45,6 +47,20 @@ class CardTransitionDestinationFragment : Fragment() {
     // These are the shared element transitions.
     sharedElementEnterTransition =
       createSharedElementTransition(300L, R.id.article_mirror)
+    sharedElementReturnTransition =
+      createSharedElementTransition(250L, R.id.card_mirror)
+  }
+
+  private fun createSharedElementTransition(duration: Long, @IdRes noTransform: Int): Transition {
+    return transitionTogether {
+      this.duration = duration
+      interpolator = FAST_OUT_SLOW_IN
+      this += SharedFade()
+      this += ChangeBounds()
+      this += ChangeTransform()
+        // The content is already transformed along with the parent. Exclude it.
+        .excludeTarget(noTransform, true)
+    }
   }
 
   override fun onCreateView(
@@ -59,24 +75,15 @@ class CardTransitionDestinationFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    ViewCompat.setTransitionName(binding.container, TRANSITION_NAME_BACKGROUND)
+    ViewCompat.setTransitionName(binding.background, TRANSITION_NAME_BACKGROUND)
+    ViewCompat.setTransitionName(binding.container, TRANSITION_NAME_ARTICLE_CONTENT)
+    ViewCompat.setTransitionName(binding.cardMirror, TRANSITION_NAME_CARD_CONTENT)
+    ViewGroupCompat.setTransitionGroup(binding.container, true)
 
-    Glide
-      .with(binding.image)
-      .load("https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Android_symbol_green_2.max-1500x1500.png")
-      .into(binding.image)
-  }
-
-  private fun createSharedElementTransition(duration: Long, @IdRes noTransform: Int): Transition {
-    return transitionTogether {
-      this.duration = duration
-      interpolator = FAST_OUT_SLOW_IN
-      this += SharedFade()
-      this += ChangeBounds()
-      this += ChangeTransform()
-        // The content is already transformed along with the parent. Exclude it.
-        .excludeTarget(noTransform, true)
-    }
+//    Glide
+//      .with(binding.image)
+//      .load("https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Android_symbol_green_2.max-1500x1500.png")
+//      .into(binding.image)
   }
 }
 

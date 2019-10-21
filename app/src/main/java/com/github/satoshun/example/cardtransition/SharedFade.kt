@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.satoshun.example.main
+package com.github.satoshun.example.cardtransition
 
 import android.animation.Animator
 import android.animation.ObjectAnimator

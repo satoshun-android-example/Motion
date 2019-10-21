@@ -13,13 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.satoshun.example.main
+package com.github.satoshun.example.cardtransition
 
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.View
 
+/**
+ * Takes another view as a substance and draws its content.
+ *
+ * This is useful for copying an appearance of another view without spending the cost of full
+ * instantiation.
+ *
+ * @see SharedFade
+ */
 class MirrorView @JvmOverloads constructor(
   context: Context,
   attrs: AttributeSet? = null,

@@ -13,17 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.satoshun.example.main
+package com.github.satoshun.example.cardtransition
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
+import androidx.core.view.ViewGroupCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
 import com.github.satoshun.example.databinding.CardTransitionFragBinding
 
 
@@ -42,18 +42,24 @@ class CardTransitionFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    Glide
-      .with(binding.image)
-      .load("https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Android_symbol_green_2.max-1500x1500.png")
-      .into(binding.image)
+//    Glide
+//      .with(binding.image)
+//      .load("https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Android_symbol_green_2.max-1500x1500.png")
+//      .into(binding.image)
 
     ViewCompat.setTransitionName(binding.card, "card")
+    ViewCompat.setTransitionName(binding.cardContent, "card_content")
+    ViewCompat.setTransitionName(binding.articleMirror, "article")
+
+    ViewGroupCompat.setTransitionGroup(binding.cardContent, true)
 
     binding.card.setOnClickListener {
       findNavController().navigate(
         CardTransitionFragmentDirections.navCardToDest(),
         FragmentNavigatorExtras(
-          binding.card to CardTransitionDestinationFragment.TRANSITION_NAME_BACKGROUND
+          binding.card to CardTransitionDestinationFragment.TRANSITION_NAME_BACKGROUND,
+          binding.cardContent to CardTransitionDestinationFragment.TRANSITION_NAME_CARD_CONTENT,
+          binding.articleMirror to CardTransitionDestinationFragment.TRANSITION_NAME_ARTICLE_CONTENT
         )
       )
     }
